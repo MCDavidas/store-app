@@ -1,0 +1,19 @@
+<div *ngIf="activeCatalog">
+  <app-products-table
+    [title]="title"
+    [products]="activeCatalog.products"
+    [selectable]="isCreateMode"></app-products-table>
+  <a
+    *ngIf="isCreateMode"
+    [class.disabled]="canNext()"
+    [routerLink]="['form']"
+    class="hvr-bounce-to-right btn btn btn-default col-md-2 pull-right"
+    (click)="handleNext()"
+  >Next
+  </a>
+  <app-circle-btn
+    *ngIf="canEdit() && !isCreateMode"
+    [link]="'edit'"
+    [iconClass]="'glyphicon glyphicon-edit'"
+  ></app-circle-btn>
+</div>
